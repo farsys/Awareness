@@ -1,10 +1,10 @@
 import { Image, StyleSheet, Platform, View, ScrollView } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Marker, Callout } from 'react-native-maps';
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-
+import { Ionicons } from '@expo/vector-icons'; // Import Ionicons
 // User's current location
 const var_user_latitude = 26.08047;
 const var_user_longitude = -80.23380;
@@ -16,18 +16,21 @@ const events = [
     longitude: -80.19480,
     severity: 'Medium',
     description: 'Shelter  Capacity 10/90',
+    icon: 'home'
   },
   {
     latitude: 26.07850,
     longitude: -80.26090,
     severity: 'Medium',
     description: 'Shelter  Capacity 50/100',
+    icon: 'home'
   },
   {
     latitude: 26.08900,
     longitude: -80.23100,
     severity: 'Medium',
     description: 'Food Bank',
+    nutrition:'nutrition'
   },
 ];
 
@@ -45,7 +48,7 @@ export default function HomeScreen() {
     >
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Resources</ThemedText>
-        <HelloWave />
+       
       </ThemedView>
 
       {/* Map Container */}
@@ -60,41 +63,63 @@ export default function HomeScreen() {
           }}
           showsUserLocation={true} //
         >
-          {/* User Location Marker */}
+          {/* User Location Marker with Icon */}
           <Marker
             coordinate={{
               latitude: var_user_latitude,
-              longitude: var_user_longitude
-              
+              longitude: var_user_longitude,
             }}
             title="You are here"
             description="This is your current location."
-            pinColor="blue"
-            
-          />
+          >
+            {/* Wrap Ionicons inside View */}
+            <View style={styles.customMarker}>
+              <Ionicons name="person-circle" size={40} color="blue" />
+            </View>
+          </Marker>
 
-          {/* Render Markers for Each Event */}
+          {/* Render Markers for Events */}
           {events.map((event, index) => (
             <Marker
               key={index}
               coordinate={{ latitude: event.latitude, longitude: event.longitude }}
-              title={`Importance: ${event.severity}`}
-              description={event.description}
-              pinColor={
-                event.severity === 'High'
-                  ? 'red'
-                  : event.severity === 'Medium'
-                  ? 'orange'
-                  : 'green'
-              }
-            />
+            >
+
+              
+
+
+
+              {/* Custom Icon for Event Marker */}
+              <View style={styles.customMarker}>
+                <Ionicons name={event.icon}
+                  size={30}
+                  color={
+                    event.severity === 'High'
+                      ? 'red'
+                      : event.severity === 'Medium'
+                      ? 'orange'
+                      : 'green'
+                  }
+                />
+              </View>
+
+
+
+              <Callout>
+                <View style={styles.callout}>
+                  <ThemedText>{`Severity: ${event.severity}`}</ThemedText>
+                  <ThemedText>{event.description}</ThemedText>
+                </View>
+              </Callout>
+
+
+            </Marker>
           ))}
         </MapView>
       </View>
-
-      {/* Informative Section */}
+      
       <ScrollView style={styles.infoContainer}>
-        <ThemedText type="subtitle">Nearby Events</ThemedText>
+        <ThemedText type="subtitle">Nearby</ThemedText>
         {events.map((event, index) => (
           <View key={index} style={styles.eventItem}>
             <ThemedText type="default">{`Importance: ${event.severity}`}</ThemedText>
@@ -102,6 +127,7 @@ export default function HomeScreen() {
           </View>
         ))}
       </ScrollView>
+
     </ParallaxScrollView>
   );
 }
@@ -137,4 +163,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#f0f0f0',
     borderRadius: 8,
   },
+callout: {
+  width: 150,
+  padding: 5,
+},
+customMarker: {
+  alignItems: 'center',
+  justifyContent: 'center',
+},
 });
