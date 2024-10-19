@@ -14,7 +14,7 @@ const events = [
   {
     latitude: 26.08147,
     longitude: -80.23480,
-    severity: 'High',
+    severity: 'Medium',
     description: 'Shelter  Capacity 10/90',
   },
   {
@@ -75,7 +75,7 @@ export default function HomeScreen() {
             <Marker
               key={index}
               coordinate={{ latitude: event.latitude, longitude: event.longitude }}
-              title={`Severity: ${event.severity}`}
+              title={`Importance: ${event.severity}`}
               description={event.description}
               pinColor={
                 event.severity === 'High'
@@ -94,7 +94,7 @@ export default function HomeScreen() {
         <ThemedText type="subtitle">Nearby Events</ThemedText>
         {events.map((event, index) => (
           <View key={index} style={styles.eventItem}>
-            <ThemedText type="bold">{`Severity: ${event.severity}`}</ThemedText>
+            <ThemedText type="bold">{`Importance: ${event.severity}`}</ThemedText>
             <ThemedText>{event.description}</ThemedText>
           </View>
         ))}
