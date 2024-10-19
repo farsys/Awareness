@@ -13,20 +13,20 @@ const var_user_longitude = -80.23380;
 // List of nearby events with coordinates, severity, and description
 const events = [
   {
-    latitude: 26.18147,
-    longitude: -80.33480,
+    latitude: 26.08147,
+    longitude: -80.23480,
     severity: 'High',
     description: 'Road closure due to maintenance',
   },
   {
-    latitude: 26.07170,
+    latitude: 26.07850,
     longitude: -80.23090,
     severity: 'Medium',
     description: 'Accident reported in this area',
   },
   {
     latitude: 26.08200,
-    longitude: -80.26100,
+    longitude: -80.23500,
     severity: 'Low',
     description: 'Minor traffic delays expected',
   },
@@ -42,13 +42,11 @@ export default function HomeScreen() {
           style={styles.reactLogo}
         />
       }
-    >
-
+    >     
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Dasthboard</ThemedText>
+        <ThemedText type="title">Resources</ThemedText>
         <HelloWave />
       </ThemedView>
-
       {/* Map Container */}
       <View style={styles.mapContainer}>
         <MapView
@@ -56,8 +54,8 @@ export default function HomeScreen() {
           initialRegion={{
             latitude: var_user_latitude,
             longitude: var_user_longitude,
-            latitudeDelta: 0.00200,
-            longitudeDelta: 0.0421,
+            latitudeDelta: 0.0,
+            longitudeDelta: 0.0,
           }}
           showsUserLocation={true} // Show the user's current location
         >

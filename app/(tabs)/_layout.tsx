@@ -24,14 +24,35 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="resources"
         options={{
-          title: 'Explore',
+          title: 'Resources',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+            <TabBarIcon name={focused ? 'search' : 'search-outline'} color={color} />
           ),
         }}
       />
+      <Tabs.Screen
+        name="notification"
+        options={{
+          title: 'Notifications',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'alert' : 'alert-outline'} color={color} />
+          ),
+        }}
+      />
+     <Tabs.Screen
+        name="profile"
+        options={{
+          title: 'Profile',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'options' : 'options-outline'} color={color} />
+          ),
+        }}
+      />
+
+
+
     </Tabs>
   );
 }
