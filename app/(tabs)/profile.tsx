@@ -17,7 +17,7 @@ export default function HomeScreen() {
       }>
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Profile/Settings!</ThemedText>
-        <HelloWave />
+        
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Basic Information</ThemedText>
