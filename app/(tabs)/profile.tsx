@@ -43,7 +43,7 @@ export default function HomeScreen() {
         <ThemedText>
         <ThemedText type="defaultSemiBold">Release Cloud Last Location: </ThemedText>On{' \n'}
         <ThemedText type="defaultSemiBold">Reach to Emermercy Contact: </ThemedText>On{' \n'}
-    
+        <ThemedText type="defaultSemiBold">Address: </ThemedText> 456 Road ,FL{' \n'}
         </ThemedText>
      
 
