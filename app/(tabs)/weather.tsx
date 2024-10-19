@@ -33,7 +33,7 @@ const EmergencyAlertSystem = () => {
       </View>
       <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.emergencyContacts}>
-          <Text style={styles.contactTitle}>Information</Text>
+          <Text style={styles.contactTitle}>Information:</Text>
           <View style={styles.windSpeedBox}>
             <Text style={styles.windSpeedTitle}>Current Wind Speed</Text>
             <Text style={styles.windSpeedAlert}>{windSpeed}</Text>
