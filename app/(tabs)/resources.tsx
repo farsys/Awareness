@@ -26,7 +26,7 @@ const events = [
     icon: 'home'
   },
   {
-    latitude: 26.08900,
+    latitude: 26.07800,
     longitude: -80.23100,
     severity: 'Medium',
     description: 'Food Bank',

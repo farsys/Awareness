@@ -43,10 +43,21 @@ export default function HomeScreen() {
         <ThemedText>
         <ThemedText type="defaultSemiBold">Release Cloud Last Location: </ThemedText>On{' \n'}
         <ThemedText type="defaultSemiBold">Reach to Emermercy Contact: </ThemedText>On{' \n'}
-        <ThemedText type="defaultSemiBold">Address: </ThemedText> 456 Road ,FL{' \n'}
+        <ThemedText type="defaultSemiBold">Address: </ThemedText> 456 Road ,FL
+        </ThemedText>
+      
+        </ThemedView>
+        <ThemedView style={styles.stepContainer}>
+        <ThemedText type="subtitle">Hackers</ThemedText>
+        <ThemedText>
+        <ThemedText type="defaultSemiBold">anthony Sinchi</ThemedText> {' \n'}
+        <ThemedText type="defaultSemiBold">Felix Reyes </ThemedText>{' \n'}
+        <ThemedText type="defaultSemiBold">Fernanda Saint Aude</ThemedText> {' \n'}
+        <ThemedText type="defaultSemiBold">Rolph N. </ThemedText>{' \n'}
+       
+        
         </ThemedText>
      
-
 
         
       </ThemedView>
