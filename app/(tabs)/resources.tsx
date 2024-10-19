@@ -1,6 +1,5 @@
-import { Image, StyleSheet, Platform, View } from 'react-native'; // Added 'View' import
-import MapView, { Marker } from 'react-native-maps'; // Import MapView and Marker
-
+import { Image, StyleSheet, Platform, View, ScrollView } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
@@ -16,19 +15,19 @@ const events = [
     latitude: 26.08147,
     longitude: -80.23480,
     severity: 'High',
-    description: 'Road closure due to maintenance',
+    description: 'Shelter  Capacity 10/90',
   },
   {
     latitude: 26.07850,
     longitude: -80.23090,
     severity: 'Medium',
-    description: 'Accident reported in this area',
+    description: 'Shelter  Capacity 50/100',
   },
   {
     latitude: 26.08200,
-    longitude: -80.23500,
+    longitude: -80.23100,
     severity: 'Low',
-    description: 'Minor traffic delays expected',
+    description: 'Food Bank',
   },
 ];
 
@@ -42,11 +41,12 @@ export default function HomeScreen() {
           style={styles.reactLogo}
         />
       }
-    >     
+    >
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Resources</ThemedText>
         <HelloWave />
       </ThemedView>
+
       {/* Map Container */}
       <View style={styles.mapContainer}>
         <MapView
@@ -54,10 +54,10 @@ export default function HomeScreen() {
           initialRegion={{
             latitude: var_user_latitude,
             longitude: var_user_longitude,
-            latitudeDelta: 0.0,
-            longitudeDelta: 0.0,
+            latitudeDelta: 0.0001, // Zoom 
+            longitudeDelta: 0.001, // Zoom l
           }}
-          showsUserLocation={true} // Show the user's current location
+          showsUserLocation={true} //
         >
           {/* User Location Marker */}
           <Marker
@@ -83,11 +83,22 @@ export default function HomeScreen() {
                   : event.severity === 'Medium'
                   ? 'orange'
                   : 'green'
-              } // Change pin color based on severity
+              }
             />
           ))}
         </MapView>
       </View>
+
+      {/* Informative Section */}
+      <ScrollView style={styles.infoContainer}>
+        <ThemedText type="subtitle">Nearby Events</ThemedText>
+        {events.map((event, index) => (
+          <View key={index} style={styles.eventItem}>
+            <ThemedText type="bold">{`Severity: ${event.severity}`}</ThemedText>
+            <ThemedText>{event.description}</ThemedText>
+          </View>
+        ))}
+      </ScrollView>
     </ParallaxScrollView>
   );
 }
@@ -98,10 +109,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 8,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
   reactLogo: {
     height: 178,
     width: 290,
@@ -110,11 +117,21 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   mapContainer: {
-    flex: 1, // Make the map container flexible
-    height: 300, // Fixed height for the map
-    marginTop: 5, // Optional: Add some margin for spacing
+    flex: 1,
+    height: 300,
+    marginTop: 5,
   },
   map: {
-    ...StyleSheet.absoluteFillObject, // Ensure the map fills the container
+    ...StyleSheet.absoluteFillObject,
+  },
+  infoContainer: {
+    marginTop: 10,
+    paddingHorizontal: 16,
+  },
+  eventItem: {
+    marginBottom: 10,
+    padding: 10,
+    backgroundColor: '#f0f0f0',
+    borderRadius: 8,
   },
 });
