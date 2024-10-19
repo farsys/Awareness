@@ -42,6 +42,15 @@ export default function TabLayout() {
         }}
       />
      <Tabs.Screen
+        name="weather"
+        options={{
+          title: 'Weather',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'umbrella' : 'umbrella-outline'} color={color} />
+          ),
+        }}
+      />
+     <Tabs.Screen
         name="profile"
         options={{
           title: 'Profile',
@@ -50,7 +59,6 @@ export default function TabLayout() {
           ),
         }}
       />
-
 
 
     </Tabs>

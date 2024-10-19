@@ -13,20 +13,20 @@ const var_user_longitude = -80.23380;
 const events = [
   {
     latitude: 26.08147,
-    longitude: -80.23480,
+    longitude: -80.19480,
     severity: 'Medium',
     description: 'Shelter  Capacity 10/90',
   },
   {
     latitude: 26.07850,
-    longitude: -80.23090,
+    longitude: -80.26090,
     severity: 'Medium',
     description: 'Shelter  Capacity 50/100',
   },
   {
-    latitude: 26.08200,
+    latitude: 26.08900,
     longitude: -80.23100,
-    severity: 'Low',
+    severity: 'Medium',
     description: 'Food Bank',
   },
 ];
@@ -55,8 +55,8 @@ export default function HomeScreen() {
           initialRegion={{
             latitude: var_user_latitude,
             longitude: var_user_longitude,
-            latitudeDelta: 0.09, // Zoom 
-            longitudeDelta: 0.09, // Zoom l
+            latitudeDelta: 0.0900, // Zoom 
+            longitudeDelta: 0.0900, // Zoom l
           }}
           showsUserLocation={true} //
         >
@@ -64,11 +64,13 @@ export default function HomeScreen() {
           <Marker
             coordinate={{
               latitude: var_user_latitude,
-              longitude: var_user_longitude,
+              longitude: var_user_longitude
+              
             }}
             title="You are here"
             description="This is your current location."
             pinColor="blue"
+            
           />
 
           {/* Render Markers for Each Event */}
@@ -95,7 +97,7 @@ export default function HomeScreen() {
         <ThemedText type="subtitle">Nearby Events</ThemedText>
         {events.map((event, index) => (
           <View key={index} style={styles.eventItem}>
-            <ThemedText type="bold">{`Importance: ${event.severity}`}</ThemedText>
+            <ThemedText type="default">{`Importance: ${event.severity}`}</ThemedText>
             <ThemedText>{event.description}</ThemedText>
           </View>
         ))}
