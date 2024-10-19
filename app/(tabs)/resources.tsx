@@ -33,6 +33,7 @@ const events = [
 
 export default function HomeScreen() {
   return (
+    
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
       headerImage={
@@ -54,8 +55,8 @@ export default function HomeScreen() {
           initialRegion={{
             latitude: var_user_latitude,
             longitude: var_user_longitude,
-            latitudeDelta: 0.0001, // Zoom 
-            longitudeDelta: 0.001, // Zoom l
+            latitudeDelta: 0.09, // Zoom 
+            longitudeDelta: 0.09, // Zoom l
           }}
           showsUserLocation={true} //
         >
