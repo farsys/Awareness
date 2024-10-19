@@ -28,7 +28,6 @@ const EmergencyAlertSystem = () => {
           <Text style={{ marginVertical: 10 }}>
             Immediate action is required. Please stay indoors and follow local guidelines.
           </Text>
-
         </View>
       </View>
       <ScrollView contentContainerStyle={styles.container}>
@@ -56,7 +55,7 @@ const EmergencyAlertSystem = () => {
           <TouchableOpacity style={styles.button} onPress={() => Alert.alert('Get Help pressed!')}>
             <Text style={styles.buttonText}>Get Help</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={() => Alert.alert('Get Help pressed!')}>
+          <TouchableOpacity style={styles.button} onPress={() => Alert.alert('Preparedness pressed!')}>
             <Text style={styles.buttonText}>Preparedness</Text>
           </TouchableOpacity>
         </View>
@@ -76,6 +75,7 @@ const styles = StyleSheet.create({
     padding: 5,
     textAlign: 'center',
     marginBottom: 5,
+    marginTop: 50, // Add margin to the top of the header to push it down
   },
   headerTitle: {
     fontSize: 32,
